@@ -51,5 +51,5 @@ client.on('message', message => {
     }
 });
 
-// login to Discord with app's process.env.token
+// login to Discord with app's token
 client.login(process.env.token);
