@@ -12,7 +12,7 @@ client.once('ready', () => {
     console.log('Ready!');
 
     // Status: Playing
-    client.user.setActivity('Help');
+    client.user.setActivity('^help');
 
     // Status: Watching
     // client.user.setActivity('YouTube', {type: "WATCHING"});
