@@ -1,0 +1,3 @@
+{
+    "commands": "```Useless Commands\n^ping: Outputs pong\n^beep: Outputs boop\n\nInfo Commands:\n^server: Outputs server information\n^user-info: Outputs user info\n^args-info: Outputs argument info```"
+}
