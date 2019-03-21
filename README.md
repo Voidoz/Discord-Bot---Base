@@ -14,14 +14,10 @@ Add this code to the config file:
 
 Open command prompt or powershell and change directory to this folder.
 
-Type the following into your command prompt or powershell (You only need to install eslint locally but you can install it globaly if you want):
+```Type the following into your command prompt or powershell (You only need to install eslint locally but you can install it globaly if you want):
 npm install discord.js
-# Locally
-npm install eslint
-# Globally
-npm install --global eslint
-
+After Creating your config.json file 
 With command prompt still open type:
-node .
+node index.js
 
 The bot is now online
