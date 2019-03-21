@@ -9,7 +9,16 @@ const client = new Discord.Client();
 // when the client is ready, run this code
 // this event will only trigger one time after logging in
 client.once('ready', () => {
-	console.log('Ready!');
+    console.log('Ready!');
+
+    // Status: Playing
+    client.user.setActivity('Help');
+
+    // Status: Watching
+    // client.user.setActivity('YouTube', {type: "WATCHING"});
+
+    // Status: Streaming
+    // client.user.setActivity('Twitch', {type: "STREAMING"});
 });
 
 // this code is run when the bot detects an incoming message
