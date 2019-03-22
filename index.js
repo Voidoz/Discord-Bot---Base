@@ -31,7 +31,7 @@ client.on('message', message => {
     const command = args.shift().toLowerCase();
 
     if (command === 'ping') {
-        message.channel.send('Pong! ' + Math.round(client.ping) + ' ms!');
+        message.channel.send('Pong! ' + Math.round(client.ping) + 'ms!');
     } else if (command === 'beep') {
         message.channel.send('Boop.');
     } else if (command === 'server') {
