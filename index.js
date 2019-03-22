@@ -14,7 +14,7 @@ client.once('ready', () => {
     console.log('Ready!');
 
     // Status: Playing
-    client.user.setActivity('^help');
+    client.user.setActivity(`${process.env.prefix}help`);
 
     // Status: Watching
     // client.user.setActivity('YouTube', {type: "WATCHING"});
@@ -30,24 +30,42 @@ client.on('message', message => {
     const args = message.content.slice(process.env.prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if (message.content.startsWith(`${process.env.prefix}ping`)) {
-        message.channel.send('Pong.');
-    } else if (message.content.startsWith(`${process.env.prefix}beep`)) {
+    if (command === 'ping') {
+        message.channel.send('Pong! ' + Math.round(client.ping) + ' ms!');
+    } else if (command === 'beep') {
         message.channel.send('Boop.');
-    } else if (message.content === `${process.env.prefix}server`) {
+    } else if (command === 'server') {
         message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`);
-    } else if (message.content === `${process.env.prefix}user-info`) {
+    } else if (command === 'user-info') {
         message.channel.send(`Your username: ${message.author.username}\nYour ID: ${message.author.id}`);
     } else if (command === 'args-info') {
-		if (!args.length) {
-			return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
-        } else if (args[0] === 'foo') {
-			return message.channel.send('bar');
+        if (!args.length) {
+            return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
+        }
+
+        message.channel.send(`Command name: ${command}\nArguments: ${args}\nArgument length: ${args.length}`);
+    } else if (command === 'help') {
+        message.channel.send(`Commands requested by ${message.author}:\n${commandList.commands}`);
+    } else if (command === 'kick') {
+		if (!message.mentions.users.size) {
+			return message.reply('you need to tag a user in order to kick them!');
 		}
 
-		message.channel.send(`First argument: ${args[0]}`);
-    } else if (message.content === `${process.env.prefix}help`) {
-        message.channel.send(`Commands requested by ${message.author}:\n${commandList.commands}\n\n\nPlease note that this version of the bot is case sensetive for the command itself. For example you wrote "^ArGs-InFo HeLlO wOrLd" it would not output anything because "^args-info" includes caps. If you wrote "^args-info HeLlO wOrLd" it would reply with your argument info because "^args-info" does not include caps.`);
+		const taggedUser = message.mentions.users.first();
+
+		message.channel.send(`You wanted to kick: ${taggedUser.username}`);
+	} else if (command === 'avatar') {
+        if (!message.mentions.users.size) {
+            return message.channel.send(`Your avatar: <${message.author.displayAvatarURL}>`);
+        }
+
+        const avatarList = message.mentions.users.map(user => {
+            return `${user.username}'s avatar: <${user.displayAvatarURL}>`;
+        });
+
+        // send the entire array of strings as a message
+        // by default, discord.js will `.join()` the array with `\n`
+        message.channel.send(avatarList);
     }
 });
 
