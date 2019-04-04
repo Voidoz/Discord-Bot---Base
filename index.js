@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 // create a new Discord client
 const client = new Discord.Client();
 
-// const { prefix, token } = require('./config.json');
+const { prefix, token } = require('./config.json');
 
 const commandList = require('./commands.json');
 
@@ -14,7 +14,7 @@ client.once('ready', () => {
     console.log('Ready!');
 
     // Status: Playing
-    client.user.setActivity(`${process.env.prefix}help`);
+    client.user.setActivity(`${prefix}help`);
 
     // Status: Watching
     // client.user.setActivity('YouTube', {type: "WATCHING"});
@@ -25,49 +25,59 @@ client.once('ready', () => {
 
 // this code is run when the bot detects an incoming message
 client.on('message', message => {
-    if (!message.content.startsWith(process.env.prefix) || message.author.bot) return;
+    if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-    const args = message.content.slice(process.env.prefix.length).split(/ +/);
+    const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if (command === 'ping') {
+    const taggedUser = message.mentions.users.first();
+
+    const avatarList = message.mentions.users.map(user => {
+        return `${user.username}'s avatar: <${user.displayAvatarURL}>`;
+    });
+
+    switch (command) {
+    case 'ping':
         message.channel.send('Pong! ' + Math.round(client.ping) + 'ms!');
-    } else if (command === 'beep') {
+        break;
+    case 'beep':
         message.channel.send('Boop.');
-    } else if (command === 'server') {
+        break;
+    case 'server':
         message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`);
-    } else if (command === 'user-info') {
+        break;
+    case 'user-info':
         message.channel.send(`Your username: ${message.author.username}\nYour ID: ${message.author.id}`);
-    } else if (command === 'args-info') {
+        break;
+    case 'args-info':
         if (!args.length) {
             return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
         }
 
         message.channel.send(`Command name: ${command}\nArguments: ${args}\nArgument length: ${args.length}`);
-    } else if (command === 'help') {
+        break;
+    case 'help':
         message.channel.send(`Commands requested by ${message.author}:\n${commandList.commands}`);
-    } else if (command === 'kick') {
+        break;
+    case 'kick':
 		if (!message.mentions.users.size) {
 			return message.reply('you need to tag a user in order to kick them!');
 		}
 
-		const taggedUser = message.mentions.users.first();
-
-		message.channel.send(`You wanted to kick: ${taggedUser.username}`);
-	} else if (command === 'avatar') {
+        message.channel.send(`You wanted to kick: ${taggedUser.username}`);
+        break;
+	case 'avatar':
         if (!message.mentions.users.size) {
             return message.channel.send(`Your avatar: <${message.author.displayAvatarURL}>`);
         }
 
-        const avatarList = message.mentions.users.map(user => {
-            return `${user.username}'s avatar: <${user.displayAvatarURL}>`;
-        });
 
         // send the entire array of strings as a message
         // by default, discord.js will `.join()` the array with `\n`
         message.channel.send(avatarList);
+        break;
     }
 });
 
 // login to Discord with app's token
-client.login(process.env.token);
+client.login(token);
