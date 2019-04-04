@@ -4,9 +4,9 @@ const Discord = require('discord.js');
 // create a new Discord client
 const client = new Discord.Client();
 
-// const { prefix, token } = require('./config.json');
+const { prefix, token } = require('./config.json');
 
-const commandList = require('./commands.json');
+const commandsList = require('./help.js');
 
 // when the client is ready, run this code
 // this event will only trigger one time after logging in
@@ -14,7 +14,7 @@ client.once('ready', () => {
     console.log('Ready!');
 
     // Status: Playing
-    client.user.setActivity(`${process.env.prefix}help`);
+    client.user.setActivity(`${prefix}help`);
 
     // Status: Watching
     // client.user.setActivity('YouTube', {type: "WATCHING"});
@@ -25,9 +25,9 @@ client.once('ready', () => {
 
 // this code is run when the bot detects an incoming message
 client.on('message', message => {
-    if (!message.content.startsWith(process.env.prefix) || message.author.bot) return;
+    if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-    const args = message.content.slice(process.env.prefix.length).split(/ +/);
+    const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
     const taggedUser = message.mentions.users.first();
@@ -57,7 +57,7 @@ client.on('message', message => {
         message.channel.send(`Command name: ${command}\nArguments: ${args}\nArgument length: ${args.length}`);
         break;
     case 'help':
-        message.channel.send(`Commands requested by ${message.author}:\n${commandList.commands}`);
+        message.channel.send(`Commands requested by ${message.author}:\n${commandsList.commands}`);
         break;
     case 'kick':
 		if (!message.mentions.users.size) {
@@ -80,4 +80,4 @@ client.on('message', message => {
 });
 
 // login to Discord with app's token
-client.login(process.env.token);
+client.login(token);

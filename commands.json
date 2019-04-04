@@ -1,3 +1,0 @@
-{
-    "commands": "**Useless Commands**\n```^beep: Outputs  boop\n^kick: Exposes your dislike to a user```\n\n**Info Commands**\n```^args-info: Outputs argument info\n^avatar: Lists links to the avatars of selected users\n^help: Shows you this message\n^ping: Outputs ping interval\n^server: Outputs server information\n^user-info: Outputs user info```"
-}
