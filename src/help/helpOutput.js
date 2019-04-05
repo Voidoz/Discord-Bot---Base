@@ -1,4 +1,4 @@
-const comm = require('./commands.js');
+const comm = require('./commandsList.js');
 
 module.exports = {
     commands: `**Useless Commands**\`\`\`
