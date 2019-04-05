@@ -7,7 +7,7 @@ const client = new Discord.Client();
 
 const help = require('./help/helpOutput.js');
 
-const roast = require('./roast/roastRandomiser.js/');
+const roast = require('./roast/roastRandomiser.js');
 
 // when the client is ready, run this code
 // this event will only trigger one time after logging in
