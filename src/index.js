@@ -34,7 +34,7 @@ client.on('message', message => {
     const taggedUser = message.mentions.users.first();
 
     const avatarList = message.mentions.users.map(user => {
-        return `${user.username}'s avatar: <${user.displayAvatarURL}>`;
+        return `${taggedUser}'s avatar: <${user.displayAvatarURL}>`;
     });
 
     switch (command) {
@@ -67,7 +67,7 @@ client.on('message', message => {
         break;
     case 'avatar':
         if (!message.mentions.users.size) {
-            return message.channel.send(`Your avatar: <${message.author.displayAvatarURL}>`);
+            return message.channel.send(`Your avatar: ${message.author.displayAvatarURL}`);
         }
 
 
