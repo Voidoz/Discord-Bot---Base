@@ -1,4 +1,5 @@
 # <h1>Discord Bot</h1>
+<h2>Note that at the moment this README is outdated. I'll just have to get around to it...</h2>
 This is code for Your Only Friend#xxxx by Oscar Hurst (some code may be edited by others and the original code is stolen *cough* *cough* borrowed from https://discordjs.guide/) and if you want to use this code you may want to edit the package.json file.
 
 >Before continuing you must install Node.js to your PC. Link here: https://nodejs.org/en/download/
