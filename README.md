@@ -8,14 +8,6 @@ This is code for Your Only Friend#xxxx by Oscar Hurst (some code may be edited b
 
 <ol>
 
-<li>Make a file named "process.json" (without the quotes) under the file "src"</li>
-
-<br>
-
-<li>Un-comment line 6 in index.js (also located in "src")</li>
-
-<br>
-
 <li>Add this code to the "process.json" file:</li>
 
 ```
@@ -53,6 +45,9 @@ This is code for Your Only Friend#xxxx by Oscar Hurst (some code may be edited b
 
 The bot is now online
 
+# <h2>###################################</h2>
+# <h2>-IGNORE THE FOLLOWING. IT'S OUTDATED!!!-</h2>
+# <h2>###################################</h2>
 # <h2>Bot Setup (Heroku)</h2>
 
 <ol>

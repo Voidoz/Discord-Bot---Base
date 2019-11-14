@@ -1,7 +1,7 @@
 {
-  "name": "your-only-friend",
+  "name": "discord-bot-base",
   "version": "1.0.0",
-  "description": "Your Only Friend#xxxx",
+  "description": "A base template for making a Node.JS Discord bot.",
   "main": "./src/index.js",
   "scripts": {
     "start": "node ./src/index.js"
@@ -12,6 +12,8 @@
   "private": true,
   "dependencies": {
     "discord.js": "^11.4.2",
-    "eslint": "^5.15.3"
+    "eslint": "^5.15.3",
+    "request": "^2.88.0",
+    "snekfetch": "^4.0.4"
   }
 }

@@ -1,0 +1,7 @@
+{
+	"env":
+	{
+		"prefix": "[PREFIX HERE]",
+		"token": "[BOT TOKEN HERE]"
+	}
+}

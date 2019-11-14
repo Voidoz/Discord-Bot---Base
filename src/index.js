@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 // create a new Discord client
 const client = new Discord.Client();
 
-// const process = require('./process.json');
+const process = require('./process.json');
 
 const runCommand = require("./runCommand.js");
 

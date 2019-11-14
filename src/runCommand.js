@@ -1,4 +1,4 @@
-// const process = require("./process.json");
+const process = require("./process.json");
 
 module.exports = function(client, message, args, command, taggedUser, avatarList) {
 
